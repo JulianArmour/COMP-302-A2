@@ -1,8 +1,15 @@
 (* Question 1. *)
 
-let rec pairlists (l1, l2) =
+(* let rec pairlists (l1, l2) =
   let l = List.fold_left2 (fun acc element1 element2 -> (element1, element2) :: acc) [] l1 l2 in
   List.rev l
+;; *)
+
+let rec pairlists (l1, l2) =
+  match (l1, l2) with
+  | ([], _) -> []
+  | (_, []) -> []
+  | (h1 :: t1, h2 :: t2) -> (h1, h2) :: pairlists (t1, t2)
 ;;
 
 let wmean weights data =
